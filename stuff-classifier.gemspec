@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "ruby-stemmer"
   s.add_runtime_dependency "sequel"
   s.add_runtime_dependency "redis"
-
+  s.add_runtime_dependency 'activesupport'
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake", ">= 0.9.2"
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "turn", ">= 0.8.3"
   s.add_development_dependency "simplecov"
   s.add_development_dependency "awesome_print"
-  s.add_development_dependency "ruby-debug19"
+  # s.add_development_dependency "ruby-debug19"
 
 end
 

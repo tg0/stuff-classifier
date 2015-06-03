@@ -5,6 +5,8 @@ class Test001Tokenizer < TestBase
   before do
     @en_tokenizer = StuffClassifier::Tokenizer.new
     @fr_tokenizer = StuffClassifier::Tokenizer.new(:language => "fr")
+    @ru_tokenizer = StuffClassifier::Tokenizer.new(:language => "ru")
+
   end
 
   def test_simple_tokens
@@ -39,10 +41,17 @@ class Test001Tokenizer < TestBase
   def test_unicode
   
     words = @fr_tokenizer.each_word("il s'appelle le vilain petit canard : en référence à Hans Christian Andersen, se démarquer négativement")
-
     should_return = [
       "appel", "vilain", "pet", "canard", "référent", 
       "han", "christian", "andersen", "démarqu", "négat"]
+
+    assert_equal should_return, words      
+  end
+
+  def test_russian
+  
+    words = @ru_tokenizer.each_word("Рыба плавает в воде")
+    should_return = [ "рыб",'плава','вод' ]
 
     assert_equal should_return, words      
   end

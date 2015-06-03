@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require "lingua/stemmer"
+require 'active_support/all'
 
 class StuffClassifier::Tokenizer
   require  "stuff-classifier/tokenizer/tokenizer_properties"
@@ -57,7 +58,7 @@ class StuffClassifier::Tokenizer
           next if w == '' || ignore_words.member?(w.downcase)
 
         if stemming? and stemable?(w)
-          w = @stemmer.stem(w).downcase
+          w = @stemmer.stem(w).mb_chars.downcase.to_s
           next if ignore_words.member?(w)
         else
           w = w.downcase
